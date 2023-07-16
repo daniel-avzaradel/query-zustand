@@ -1,14 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
-import api from "../../services/api"
+import { useQuery, QueryFunctionContext } from "@tanstack/react-query";
 import { Repo } from "./types";
+import api from "../../services/api";
 
-const getRepos = async() => {
-    const { data } = await api.get<Repo[]>('/users/daniel-avzaradel/repos');
-    return data;
-}
+const getRepos = async (context: QueryFunctionContext) => {
+  const [, userId] = context.queryKey;
+  const { data } = await api.get<Repo[]>(`/users/${userId}/repos`);
+  return data;
+};
 
-const useFetchRepos = () => {
-    return useQuery(['repos'], getRepos)
-}
+const useFetchRepos = (userId: string) => {
+  return useQuery(["repos", userId], getRepos);
+};
 
-export default useFetchRepos
+export default useFetchRepos;
