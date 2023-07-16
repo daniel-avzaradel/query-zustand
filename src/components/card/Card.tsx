@@ -9,9 +9,9 @@ interface CardProps {
 
 const Card = ({ repo }: CardProps) => {
 
-    const [active, setActive] = useState(false)
-
+    
     const store = useFavoriteRepos(state => state)
+    const [active, setActive] = useState(store.favoriteRepoIds.includes(repo.id))
     const isFavorite = (id: number) => {
         return store.favoriteRepoIds.includes(id) ? 'Unfavorite' : 'Favorite'
     }

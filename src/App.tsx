@@ -5,7 +5,6 @@ import Card from './components/card/Card';
 function App() {
 
     const {data} = useFetchRepos('daniel-avzaradel');
-    console.log(data);
 
     return (
     <div className='App'>
