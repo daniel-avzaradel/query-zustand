@@ -1,17 +1,20 @@
 import './App.css'
-import useFetchRepos from './queries/repo'
+import Card from './components/card/Card';
+import useFetchRepos from './queries/repo';
 
 function App() {
 
-  const { data } = useFetchRepos();
-  console.log(data);
-  
+    const {data} = useFetchRepos();
+    console.log(data);
 
-  return (
-    <>
-      
-    </>
-  )
+    return (
+    <div className='App'>
+      {data?.map((item: any, i: number) => {
+        return <Card key={i} />
+      })}
+      <Card/>
+    </div>
+    )
 }
 
 export default App
