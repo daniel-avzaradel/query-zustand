@@ -18,17 +18,13 @@ const Card = ({ repo }: CardProps) => {
 
     const handleBtn = (id: number) => {
         if (store.favoriteRepoIds.includes(id)) {
-            console.log(active);
             setActive(false)
             return store.removeFromFavorites(id)
         } else {
-            console.log(active);
             setActive(true)
             return store.addToFavorites(id)
         }
     }
-
-    
 
     return (
     <div className='card'>
