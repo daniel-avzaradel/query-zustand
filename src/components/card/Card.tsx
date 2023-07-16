@@ -1,8 +1,17 @@
+import { Repo } from '../../queries/repo/types'
 import './styles.css'
 
-const Card = () => {
+interface CardProps {
+    repo: Repo
+}
+
+const Card = ({repo}: CardProps) => {
+
   return (
-    <div className='card'>Card</div>
+    <div className='card'>
+        {repo.name}
+        <button className="btn">Favorite</button>
+    </div>
   )
 }
 

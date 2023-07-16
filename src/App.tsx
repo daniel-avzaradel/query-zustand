@@ -1,6 +1,6 @@
 import './App.css'
-import Card from './components/card/Card';
 import useFetchRepos from './queries/repo';
+import Card from './components/card/Card';
 
 function App() {
 
@@ -9,10 +9,9 @@ function App() {
 
     return (
     <div className='App'>
-      {data?.map((item: any, i: number) => {
-        return <Card key={i} />
+      {data?.map((repo) => {
+        return <Card repo={repo} key={repo.id} />
       })}
-      <Card/>
     </div>
     )
 }
