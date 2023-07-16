@@ -8,21 +8,24 @@ interface CardProps {
 }
 
 const Card = ({ repo }: CardProps) => {
-
     
-    const store = useFavoriteRepos(state => state)
-    const [active, setActive] = useState(store.favoriteRepoIds.includes(repo.id))
+    const favoriteRepoIds = useFavoriteRepos(state => state.favoriteRepoIds)
+    const addToFavorites = useFavoriteRepos(state => state.addToFavorites)
+    const removeFromFavorites = useFavoriteRepos(state => state.removeFromFavorites)
+
+    const [active, setActive] = useState(favoriteRepoIds.includes(repo.id))
+
     const isFavorite = (id: number) => {
-        return store.favoriteRepoIds.includes(id) ? 'Unfavorite' : 'Favorite'
+        return favoriteRepoIds.includes(id) ? 'Unfavorite' : 'Favorite'
     }
 
     const handleBtn = (id: number) => {
-        if (store.favoriteRepoIds.includes(id)) {
+        if (favoriteRepoIds.includes(id)) {
             setActive(false)
-            return store.removeFromFavorites(id)
+            return removeFromFavorites(id)
         } else {
             setActive(true)
-            return store.addToFavorites(id)
+            return addToFavorites(id)
         }
     }
 
