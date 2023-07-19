@@ -28,7 +28,7 @@
     width: 120px;
     transition: .2s ease-in-out;
     border: 2px solid transparent;
-    background-color: #111;
+    background-color: #222;
     color: white;
     &:hover {
         border: 2px solid cyan;
